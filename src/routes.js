@@ -1,14 +1,17 @@
-// importando as coisas do Router
+import Footer from 'components/Footer';
 import Menu from 'components/Menu';
 import PaginaPadrao from 'components/PaginaPadrao';
 import Cardapio from 'pages/Cardapio';
 import Inicio from 'pages/Inicio';
+import NotFound from 'pages/notFound';
 import Sobre from 'pages/Sobre';
+// importando as coisas do Router
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default function AppRouter() {
   return (
-    <main>
+    // aplicando a estilização que está em 'index.css', deixando todos os componentes em 100vh
+    <main className='container'>
       <Router>
         <Menu />
         <Routes>
@@ -29,7 +32,10 @@ export default function AppRouter() {
             <Route path="cardapio" element={<Cardapio />} />
             <Route path="sobre" element={<Sobre />} />
           </Route>
+          {/* para qualquer rota diferente das outras, ele exibe essa rota */}
+          <Route path='*' element={<NotFound />} />
         </Routes>
+        <Footer />
       </Router>
     </main>
   );
